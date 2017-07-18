@@ -11,17 +11,16 @@ using Synergix.ADCE.Lite.Core;
 using Synergix.ADCE.Lite.Objects;
 */
 
-public
 
 class Command {
-private
-    static readonly Logger
+private:
+    static readonly Logger;
     Logger = LogManager.GetCurrentClassLogger();
-private
+private:
     static readonly string
     LoopbackIPv4Address = "127.0.0.1";
 
-public
+public:
 
     static bool Execute() {
         try {
@@ -41,7 +40,7 @@ public
         }
     }
 
-private
+private:
 
     static void CheckDnsForNic(NetworkInterface nic, List <ValidDNS> listValidDns) {
         if (!GlobalData.ReadOnly) {
