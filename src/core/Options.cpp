@@ -250,9 +250,9 @@ namespace Mono.Options
                 return end;
             return sep;
         }
-    }
+    };
 
-    public class OptionValueCollection : IList, IList<string>
+    class OptionValueCollection : IList, IList<string>
     {
 
         List<string> values = new List<string>();
@@ -387,16 +387,16 @@ namespace Mono.Options
         {
             get { return c; }
         }
-    }
+    };
 
-    public enum OptionValueType
+     enum OptionValueType
     {
         None,
         Optional,
         Required,
-    }
+    };
 
-    public abstract class Option
+     class Option
     {
         string prototype, description;
         string[] names;
@@ -615,9 +615,9 @@ namespace Mono.Options
         {
             return Prototype;
         }
-    }
+    };
 
-    public abstract class ArgumentSource
+     abstract class ArgumentSource
     {
 
         protected ArgumentSource()
@@ -693,7 +693,7 @@ namespace Mono.Options
                     reader.Dispose();
             }
         }
-    }
+    };
 
 #if !PCL
     public class ResponseFileSource : ArgumentSource
@@ -719,7 +719,7 @@ namespace Mono.Options
             replacement = ArgumentSource.GetArgumentsFromFile(value.Substring(1));
             return true;
         }
-    }
+    };
 #endif
 
 #if !PCL
@@ -768,7 +768,7 @@ namespace Mono.Options
             info.AddValue("OptionName", option);
         }
 #endif
-    }
+    };
 
     public delegate void OptionAction<TKey, TValue>(TKey key, TValue value);
 
@@ -895,7 +895,7 @@ namespace Mono.Options
             {
                 throw new NotSupportedException("Category.OnParseComplete should not be invoked.");
             }
-        }
+        };
 
 
         public new OptionSet Add(Option option)
@@ -925,7 +925,7 @@ namespace Mono.Options
             {
                 action(c.OptionValues);
             }
-        }
+        };
 
         public OptionSet Add(string prototype, Action<string> action)
         {

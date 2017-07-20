@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.DirectoryServices.Protocols;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using NLog;
+﻿using NLog;
 using Synergix.ADCE.Lite.Core;
 using Synergix.ADCE.Lite.Objects;
 
 
-namespace Synergix.ADCE.Lite
-{
-    public class DnsDiscovery
+     class DnsDiscovery
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
@@ -22,8 +14,6 @@ namespace Synergix.ADCE.Lite
             try
             {
                 var lisValidDNS = GetCurrentComputerClosestSiteDNSServers(false);
-
-
                 if (lisValidDNS.Count > 0)
                 {
                     //THIS makes ORDER servers properly and fill value ORDER
@@ -113,11 +103,8 @@ namespace Synergix.ADCE.Lite
                 }
                 else 
                 {
-                    // THERE IS NOTHING IN THE LIST OF SERVERS
-                    
                     Console.ResetColor();
                     Console.WriteLine("List of valid DNS servers is empty");
-
                     Logger.Warn("List of valid DNS servers is empty");                    
                 }
             }
@@ -130,8 +117,6 @@ namespace Synergix.ADCE.Lite
             }
             return newValidDnsList;
         }
-
-        #region "private methodes"
 
         public static int PingReplyMarkCalculator(int pingReplay)
         {
@@ -163,7 +148,6 @@ namespace Synergix.ADCE.Lite
             try
             {
                 SearchRequest searchRequest = new SearchRequest(siteDistinguishedName, "objectClass=siteLink", SearchScope.Subtree, "name", "cost", "siteList", "distinguishedName");
-
                 SearchResponse searchResponse = ldapConnection.SendRequest(searchRequest) as SearchResponse;
 
                 if (searchResponse != null)
@@ -715,6 +699,4 @@ namespace Synergix.ADCE.Lite
             return identity;
         }
 
-        #endregion
     }
-}

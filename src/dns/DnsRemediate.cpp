@@ -1,14 +1,12 @@
-﻿using System;
-using System.Management;
-using NLog;
-
-namespace Synergix.ADCE.Lite
-{
-    public static class DnsRemediate
+﻿
+      class DnsRemediate
     {
-        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        static Logger Logger = LogManager.GetCurrentClassLogger();
 
-        public static bool SetDns(string nic, string dns)
+
+        public:
+
+         static bool SetDns(string nic, string dns)
         {
             ManagementClass objMc = new ManagementClass("Win32_NetworkAdapterConfiguration");
             ManagementObjectCollection objMoc = objMc.GetInstances();
@@ -35,5 +33,4 @@ namespace Synergix.ADCE.Lite
 
             return false;
         }
-    }
-}
+    };

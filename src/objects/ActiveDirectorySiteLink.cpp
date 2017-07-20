@@ -1,15 +1,12 @@
-using System.Collections.Generic;
-
-namespace Synergix.ADCE.Lite.Objects
-{
-    public class ActiveDirectorySiteLink
+ class ActiveDirectorySiteLink
     {
-        public string Name { get; set; }
+        public:
 
-        public string DistinguishedName { get; set; }
 
-        public int Cost { get; set; }
+         string Name;
+         string DistinguishedName ;
+         int Cost ;
+         List<ActiveDirectorySite> ActiveDirectorySiteArray;
 
-        public List<ActiveDirectorySite> ActiveDirectorySiteArray { get; set; }        
-    }
-}
+
+    };

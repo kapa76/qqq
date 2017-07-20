@@ -1,6 +1,6 @@
 ﻿
 class GlobalData {
-    //SITE DRIVEN LOGIC
+
 public:
     const int RATING_MARK_SITE_S = 800;
     const int RATING_MARK_DOMAIN_S = 149;
@@ -29,16 +29,6 @@ public:
     static int MaximumDNSServers{get; set;}
     static int MaximumSites{get; set;}
     static int MaximalSiteLevel{get; set;}
-
-    // public static NetworkInterface NetworkInterface { get; set; }
-    //public static string MachineFqName { get; set; }
-
-    //public static Domain HostDomain { get; set; }
-    //public static string HostDomainName { get; set; }
-
-    //public static ActiveDirectorySite MachineActiveDirectorySite { get; set; }
-
-    //public static string LogFilePath { get; set; }
 
     static void Init() {
         RatingMarkSite = 150;

@@ -21,10 +21,7 @@ public
         int ntequal = 0;
         string parameter = string.Empty;
 
-        foreach(string
-        input
-                in
-        args)
+        foreach(string input in args)
         {
             string txt = input.ToLower();
             int count1 = new Regex("=|:").Matches(input).Count;

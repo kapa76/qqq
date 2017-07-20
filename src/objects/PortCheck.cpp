@@ -1,10 +1,16 @@
-using System;
-
-namespace Synergix.ADCE.Lite.Objects
-{
-    public class PortCheck
+class PortCheck
     {
-        public PortCheck()
+         Guid ComputerId ;
+         int Id ;
+         int ValidDNSId;
+         string IpType;
+         int PortNumber ;
+         bool Value;
+         string Note;
+
+        public:
+
+        PortCheck()
         {
             ComputerId = new Guid("00000000-0000-0000-0000-000000000000");
             ValidDNSId = 0;
@@ -20,17 +26,17 @@ namespace Synergix.ADCE.Lite.Objects
             this.IpType = IpType.ToString();
             this.PortNumber = PortNumber;
             this.Value = Value;
-            //  this.ComputerId = ComputerId;
         }
 
-        public Guid ComputerId { get; set; }
-        public int Id { get; set; }
-        public int ValidDNSId { get; set; }
-        public string IpType { get; set; }
-        public int PortNumber { get; set; }
-        public bool Value { get; set; }
-        public string Note { get; set; }
+         Guid getComputerId();
+         void setGuid(string a);
+
+         int Id { get; set; }
+         int ValidDNSId { get; set; }
+         string IpType { get; set; }
+         int PortNumber { get; set; }
+         bool Value { get; set; }
+         string Note { get; set; }
 
         public virtual ValidDNS ValidDNS { get; set; }
-    }
-}
+    };

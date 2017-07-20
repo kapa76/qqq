@@ -1,17 +1,9 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Text;
-//using Synergix.ADCE.Lite.Objects;
-
-//namespace Synergix.ADCE.Lite.Providers
-//{
+﻿
 class BaseProvider {
-protected:
     Options options;
-
-    Options get();
-
 public:
+    Options get(){ return options; }
+
     BaseProvider(Options options) {
         Options = options;
     }

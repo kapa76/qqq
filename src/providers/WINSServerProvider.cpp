@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.DirectoryServices.ActiveDirectory;
-using System.DirectoryServices.Protocols;
-using System.Linq;
-using System.Text;
-using NLog;
+﻿/*
 using Synergix.ADCE.Lite.Commands;
 using Synergix.ADCE.Lite.Objects;
 using ActiveDirectorySite = System.DirectoryServices.ActiveDirectory.ActiveDirectorySite;
 using ActiveDirectorySiteLink = System.DirectoryServices.ActiveDirectory.ActiveDirectorySiteLink;
 using DomainController = Synergix.ADCE.Lite.Objects.DomainController;
+*/
 
-namespace Synergix.ADCE.Lite.Providers
-{
-    public class WINSServerProvider : BaseProvider
+    class WINSServerProvider : BaseProvider
     {
-        private readonly CommandContext _Context;
-        private readonly Logger _Logger;
-        private readonly List<string> _CheckedSites;
+        private:
+             readonly CommandContext _Context;
+             readonly Logger _Logger;
+             readonly List<string> _CheckedSites;
+
+        public:
 
         public WINSServerProvider(Options options, CommandContext context) : base(options)
         {
@@ -29,9 +25,9 @@ namespace Synergix.ADCE.Lite.Providers
             _CheckedSites = new List<string>();
         }
 
-        public List<WindowsServer> AllDiscoveredWINSServers { get; }
+        List<WindowsServer> AllDiscoveredWINSServers ;
 
-        public IList<WindowsServer> GetWINSServersFromClosesedSite(int maxServersToReturn)
+        IList<WindowsServer> GetWINSServersFromClosesedSite(int maxServersToReturn)
         {
             int maxServers = maxServersToReturn;
 
@@ -48,7 +44,9 @@ namespace Synergix.ADCE.Lite.Providers
             }
         }
 
-        private IList<WindowsServer> GetWINSServers(Domain domain, ActiveDirectorySite site, int cost, int maxServersToReturn, int level)
+        private:
+
+        IList<WindowsServer> GetWINSServers(Domain domain, ActiveDirectorySite site, int cost, int maxServersToReturn, int level)
         {
             if (level > 3) return new List<WindowsServer>();
 
@@ -141,7 +139,8 @@ namespace Synergix.ADCE.Lite.Providers
             return servers;
         }
 
-        private List<SiteOverrideData> GetOverridenSites(string domainName, string siteDistinguishedName)
+        private:
+         List<SiteOverrideData> GetOverridenSites(string domainName, string siteDistinguishedName)
         {
             if (string.IsNullOrEmpty(siteDistinguishedName)) throw new ArgumentNullException(nameof(siteDistinguishedName));
 
@@ -209,5 +208,4 @@ namespace Synergix.ADCE.Lite.Providers
 
             return sites;
         }
-    }
-}
+    };

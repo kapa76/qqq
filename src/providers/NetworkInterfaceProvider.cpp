@@ -1,25 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
-using NLog;
-using Synergix.ADCE.Lite.Objects;
-
-namespace Synergix.ADCE.Lite.Providers
-{
-    public class NetworkInterfaceProvider : BaseProvider
+﻿
+ class NetworkInterfaceProvider : BaseProvider
     {
-        private readonly Logger _Logger;
+        private:
+         readonly Logger _Logger;
 
-        public NetworkInterfaceProvider(Options options) : base(options)
+        public:
+         NetworkInterfaceProvider(Options options) : base(options)
         {
             _Logger = LogManager.GetCurrentClassLogger();
         }
 
-        public NetworkInterface GetDefaultInteface()
+         NetworkInterface GetDefaultInteface()
         {
             try
             {
@@ -58,7 +49,7 @@ namespace Synergix.ADCE.Lite.Providers
             return null;
         }
 
-        public bool SetDNSServers(string networkInterfaceId, string dnsServers)
+         bool SetDNSServers(string networkInterfaceId, string dnsServers)
         {
             if (string.IsNullOrEmpty(networkInterfaceId)) throw new ArgumentNullException(nameof(networkInterfaceId));
             if (string.IsNullOrEmpty(dnsServers)) throw new ArgumentNullException(nameof(dnsServers));
@@ -89,7 +80,7 @@ namespace Synergix.ADCE.Lite.Providers
             return false;
         }
 
-        public bool SetWINSServers(string networkInterfaceId, string wins1, string wins2)
+         bool SetWINSServers(string networkInterfaceId, string wins1, string wins2)
         {
             ManagementClass objMc = new ManagementClass("Win32_NetworkAdapterConfiguration");
             ManagementObjectCollection objMoc = objMc.GetInstances();
@@ -118,7 +109,7 @@ namespace Synergix.ADCE.Lite.Providers
             return false;
         }
 
-        public void WriteWINSServers(string networkInterfaceId)
+         void WriteWINSServers(string networkInterfaceId)
         {
             ManagementClass objMc = new ManagementClass("Win32_NetworkAdapterConfiguration");
             ManagementObjectCollection objMoc = objMc.GetInstances();
@@ -149,7 +140,7 @@ namespace Synergix.ADCE.Lite.Providers
             }
         }
 
-        public void WriteNetworkInformation(NetworkInterface nic)
+         void WriteNetworkInformation(NetworkInterface nic)
         {
             var properties = nic.GetIPProperties();
 
@@ -222,5 +213,4 @@ namespace Synergix.ADCE.Lite.Providers
             //    _Logger.Info("WINS Server\t\t\t[{1}]: [{0}]", winsIp, i + 1);
             //}
         }
-    }
-}
+    };

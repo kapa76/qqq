@@ -13,8 +13,6 @@ public:
         }
     }
 
-public:
-
     static string SmartTrim(string text, int length) {
         if (string.IsNullOrEmpty(text)) {
             throw new ArgumentNullException(nameof(text));
